@@ -10,9 +10,9 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 /// @custom:security-contact ncoonrod@elftower.net
 contract RuneguardCopper is ERC20, ERC20Burnable, ERC20Snapshot, Ownable, Pausable
 {
-    constructor() ERC20("RuneguardCopper", "COPPER")
+    constructor() ERC20("Copper", "DORF")
     {
-        _mint(msg.sender, 120000000 * 10 ** decimals());
+        _mint(msg.sender, 1200000000 * 10 ** decimals());
     }
 
     function snapshot() public onlyOwner

@@ -2,9 +2,15 @@
   "name": "runeguard_dapps",
   "version": "1.0.0",
   "description": "Runeguard dapps",
-  "main": "build/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && npx hardhat compile",
+    "test": "npx hardhat test",
+    "get-testnet-signer-address": "run build/scripts/GetSignerAddress.js --network emerald_testnet",
+    "get-signer-address": "run build/scripts/GetSignerAddress.js --network emerald",
+    "deploy-token-testnet": "run build/scripts/DeployToken.js --network emerald_testnet",
+    "deploy-token": "run build/scripts/DeployToken.js --network emerald",
+    "deploy-vesting-wallet-testnet": "run build/scripts/DeployVestingWallet.js --network emerald_testnet",
+    "deploy-vesting-wallet": "run build/scripts/DeployVestingWallet.js --network emerald"
   },
   "repository": {
     "type": "git",
@@ -53,5 +59,10 @@
     "ts-node": "^10.7.0",
     "typechain": "^5.2.0",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-truffle5": "^2.0.6",
+    "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/test-helpers": "^0.5.15"
   }
 }

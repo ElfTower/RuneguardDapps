@@ -22,22 +22,46 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+require('@nomiclabs/hardhat-truffle5');
+
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
   networks: {
+    hardhat: {
+      blockGasLimit: 10000000,
+      allowUnlimitedContractSize: true
+    },
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
       accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        process.env.ROPSTEN_PRIVATE_KEY !== undefined ? [process.env.ROPSTEN_PRIVATE_KEY] : []
     },
+    emerald: {
+      url: process.env.OASIS_EMERALD_URL || "",
+      accounts:
+        process.env.OASIS_EMERALD_PRIVATE_KEY !== undefined ? [process.env.OASIS_EMERALD_PRIVATE_KEY] : []
+    },
+    emerald_testnet: {
+      url: process.env.OASIS_EMERALD_TESTNET_URL || "",
+      accounts:
+        process.env.OASIS_EMERALD_TESTNET_PRIVATE_KEY !== undefined ? [process.env.OASIS_EMERALD_TESTNET_PRIVATE_KEY] : []
+    }
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
-    currency: "USD",
+    currency: "USD"
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
-  },
+    apiKey: process.env.ETHERSCAN_API_KEY
+  }
 };
 
 export default config;

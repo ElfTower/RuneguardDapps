@@ -6,20 +6,10 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+  const [deployer] = await ethers.getSigners();
 
-  // We get the contract to deploy
-  const RuneguardCopper = await ethers.getContractFactory("RuneguardCopper");
-  const copper = await RuneguardCopper.deploy();
-
-  await copper.deployed();
-
-  console.log("RuneguardCopper deployed to:", copper.address);
+  console.log("Deploying contracts with the account:", deployer.address);
+  console.log("Account balance:", (await deployer.getBalance()).toString());
 }
 
 // We recommend this pattern to be able to use async/await everywhere
