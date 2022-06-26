@@ -5,12 +5,12 @@
   "scripts": {
     "build": "tsc && npx hardhat compile",
     "test": "npx hardhat test",
-    "get-testnet-signer-address": "run build/scripts/GetSignerAddress.js --network emerald_testnet",
-    "get-signer-address": "run build/scripts/GetSignerAddress.js --network emerald",
-    "deploy-token-testnet": "run build/scripts/DeployToken.js --network emerald_testnet",
-    "deploy-token": "run build/scripts/DeployToken.js --network emerald",
-    "deploy-vesting-wallet-testnet": "run build/scripts/DeployVestingWallet.js --network emerald_testnet",
-    "deploy-vesting-wallet": "run build/scripts/DeployVestingWallet.js --network emerald"
+    "get-testnet-signer-address": "npx hardhat run build/scripts/GetSignerAddress.js --network emerald_testnet",
+    "get-signer-address": "npx hardhat run build/scripts/GetSignerAddress.js --network emerald",
+    "deploy-token-testnet": "npx hardhat run build/scripts/DeployToken.js --network emerald_testnet",
+    "deploy-token": "npx hardhat run build/scripts/DeployToken.js --network emerald",
+    "deploy-vesting-wallet-testnet": "npx hardhat run build/scripts/DeployVestingWallet.js --network emerald_testnet",
+    "deploy-vesting-wallet": "npx hardhat run build/scripts/DeployVestingWallet.js --network emerald"
   },
   "repository": {
     "type": "git",
