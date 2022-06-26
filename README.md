@@ -15,6 +15,8 @@ Compile the smart contracts:
 npm run build
 ```
 
+In this same folder, copy `env.example` to `.env`, change any values you may need to change.
+
 Test the smart contracts:
 ```console
 npm test
