@@ -9,7 +9,11 @@ async function main() {
   const [deployer] = await ethers.getSigners();
 
   console.log("Deploying contracts with the account:", deployer.address);
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+
+  const weiAccountBalance = (await deployer.getBalance());
+  const accountBalance = ethers.utils.formatEther (weiAccountBalance);
+
+  console.log("Account balance:", accountBalance.toString());
 }
 
 // We recommend this pattern to be able to use async/await everywhere

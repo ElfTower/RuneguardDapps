@@ -26,7 +26,7 @@ require('@nomiclabs/hardhat-truffle5');
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.4",
+    version: "0.8.8",
     settings: {
       optimizer: {
         enabled: true,
@@ -46,8 +46,13 @@ const config: HardhatUserConfig = {
     },
     emerald: {
       url: process.env.OASIS_EMERALD_URL || "",
+      chainId: 42262,
+      ///from: "0x9F65E6b4B0Fd5D686b4461dcCC048D3B2D04cE30",
       accounts:
-        process.env.OASIS_EMERALD_PRIVATE_KEY !== undefined ? [process.env.OASIS_EMERALD_PRIVATE_KEY] : []
+      {
+        mnemonic: process.env.OASIS_EMERALD_MNEMONIC || "",
+        //process.env.OASIS_EMERALD_PRIVATE_KEY !== undefined ? [process.env.OASIS_EMERALD_PRIVATE_KEY] : []
+      }
     },
     emerald_testnet: {
       url: process.env.OASIS_EMERALD_TESTNET_URL || "",

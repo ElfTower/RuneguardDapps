@@ -9,10 +9,21 @@ async function main() {
   const [deployer] = await ethers.getSigners();
 
   console.log("Deploying contracts with the account:", deployer.address);
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+
+  const weiAccountBalance = (await deployer.getBalance());
+  const accountBalance = ethers.utils.formatEther (weiAccountBalance);
+
+  console.log("Account balance:", accountBalance.toString());
+
+  const gasPrice: any = (await deployer.getFeeData ()).gasPrice;
 
   const RuneguardCopper = await ethers.getContractFactory("RuneguardCopper");
-  const copper = await RuneguardCopper.deploy();
+  console.log("Gas price:", gasPrice.toString ());
+
+  const gweiValue = ethers.utils.formatEther (gasPrice);
+
+  console.log("Gas price:", gweiValue.toString ());
+  const copper = await RuneguardCopper.deploy ({ "gasPrice": gasPrice });
 
   await copper.deployed();
 
